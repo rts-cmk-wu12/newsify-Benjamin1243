@@ -1,0 +1,29 @@
+{
+  "name": "newsify-benjamin1243",
+  "version": "1.0.0",
+  "description": "Dette er et skole projekt, hvor vi skal lave en app? der hedder newsify",
+  "main": "index.html",
+  "scripts": {
+    "build": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rts-cmk-wu12/newsify-Benjamin1243.git"
+  },
+  "keywords": [
+    "newsSite"
+  ],
+  "author": "Benjamin Jasek Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rts-cmk-wu12/newsify-Benjamin1243/issues"
+  },
+  "homepage": "https://github.com/rts-cmk-wu12/newsify-Benjamin1243#readme",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
+}

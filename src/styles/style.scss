@@ -1,5 +1,7 @@
 
 $colorType: red;
-body{
-    background-color: $colorType;
+#wrapper{
+   max-width: 393px;
+   margin: 0 auto;
 }
+

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+$newsGrey: #404040;
+$defualtFont: "Playfair Display", serif;
+
+.splashScreen{
+    text-align: center;
+    
+    background-color: white;
+    padding-top: 3rem;
+   
+  animation-name: fadeNewsLogoIn;
+  animation-duration: 10s;
+  opacity: 0;
+    
+    height: 100vh;
+   &__img{
+    animation-name: smallToBigimg;
+    animation-duration: 4s;
+   }
+    &__heading{
+      color: $newsGrey;    
+      font-family: $defualtFont;
+      font-size: 45px;
+     
+    }
+}
+//her er scss koden til in toturial sektion
+.toturial{
+    //den starter med at være display none, men bliver ændret efter 3 sekunder gennem index.js
+    display: none;
+    &__heading{
+        font-family: $defualtFont;
+        color: $newsGrey;
+        text-align: center;
+    }
+}

@@ -19,6 +19,10 @@ module: {
         test: /\.css$/i,
         use: ["style-loader", "css-loader",],
       },
+      {
+        test: /\.html$ /,
+        use: ['html-loader']
+    },
      
       {
         test: /\.(jpg|png|svg)$/i,

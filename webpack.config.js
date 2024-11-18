@@ -1,4 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const {CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const path = require("path")
 module.exports={
 mode: "production",
@@ -19,10 +22,7 @@ module: {
         test: /\.css$/i,
         use: ["style-loader", "css-loader",],
       },
-      {
-        test: /\.html$ /,
-        use: ['html-loader']
-    },
+      
      
       {
         test: /\.(jpg|png|svg)$/i,
@@ -45,7 +45,15 @@ module: {
   plugins: [
    new HtmlWebpackPlugin({
     template:'./src/index.html'
-   })
+    
+   }),
+   new HtmlWebpackPlugin({
+    template: './src/auth.html', // Skabelon til hovedside
+    filename: 'auth.html', // Output-fil
+   
+  }),
+   
+   
   ]
 
 }

@@ -5,10 +5,14 @@ const {CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require("path")
 module.exports={
 mode: "production",
-entry: "./src/index.js",
+entry: { 
+bundle: "./src/index.js",
+auth: "./src/auth.js"
+},
+
 output:{
   path: path.resolve(__dirname, "dist"),
-  filename: "bundle.js",
+  filename: "[name].js",
   
 },
 //dette er alle tilføjelserne
@@ -44,12 +48,14 @@ module: {
   },
   plugins: [
    new HtmlWebpackPlugin({
-    template:'./src/index.html'
+    template:'./src/index.html',
+    chunks: ["bundle"]
     
    }),
    new HtmlWebpackPlugin({
     template: './src/auth.html', // Skabelon til hovedside
     filename: 'auth.html', // Output-fil
+    chunks: ["auth"]
    
   }),
    

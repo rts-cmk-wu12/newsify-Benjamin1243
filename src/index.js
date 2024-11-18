@@ -29,7 +29,7 @@ toturial.style.display = "grid"
 //hernede kører jeg mine toturial funktioner
 //først tager jeg fat i html elementerne jeg skal bruge
 const textToturElement = document.querySelector(".toturial__text")
-const imgToturElement = document.querySelector(".toturial___img")
+const imgToturElement = document.querySelector(".toturial__img")
 const headingToturElement = document.querySelector(".toturial__heading")
 //her tager jeg lige fat i min knap og giver den en eventlisterner
 document.querySelector(".toturial__skipAndNextButton--next").addEventListener("click", toturialNext)
@@ -42,7 +42,7 @@ const torturial = new ShowNextStep
 function toturialNext(){
 infoarray = torturial.nextStep()
 if(torturial.status == 3){
-    document.open("auth.html")
+    window.location.href = "auth.html"
 }
 textToturElement.textContent = infoarray[0]
 headingToturElement.textContent = infoarray[1]

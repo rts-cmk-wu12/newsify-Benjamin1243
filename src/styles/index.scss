@@ -48,6 +48,9 @@ $smallTextFont: "Open Sans", sans-serif;
         text-align: center;
         color: $newsGrey;
     }
+    &__img{
+        max-height: 376px;
+    }
     //her er koden til statusbarene 
     &__statusButtons{
         display: flex;

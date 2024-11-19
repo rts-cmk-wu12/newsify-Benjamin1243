@@ -28,6 +28,7 @@
     display: grid;
     border-radius: 40px;
     text-align: center;
+    
     place-content: center;
     display: block;
     border: 1px solid #C5C5C5;
@@ -35,10 +36,12 @@
     text-decoration: none;
     color: variables.$newsGrey;
     font-family: variables.$smallTextFont;
+    margin: 19px auto;
   
 }
 &__orBox{
     display: flex;
+    
     margin-top: 70px;
     font-weight: 300;
     width: 100%;
@@ -49,11 +52,11 @@
 }
 &__orLine{
     
-width: 40%;
+width: 50%;
 height: 0px;
 }
 &__orText{
-    
+    text-align: center;
 }
 &__continueWith--password{
     background-color: variables.$buttonGreen;

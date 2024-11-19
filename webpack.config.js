@@ -7,12 +7,14 @@ module.exports={
 mode: "production",
 entry: { 
 bundle: "./src/index.js",
-auth: "./src/auth.js"
+auth: "./src/auth.js",
+home: "./src/home.js"
 },
 
 output:{
   path: path.resolve(__dirname, "dist"),
   filename: "[name].js",
+  
   
 },
 //dette er alle tilføjelserne
@@ -56,6 +58,13 @@ module: {
     template: './src/auth.html', // Skabelon til hovedside
     filename: 'auth.html', // Output-fil
     chunks: ["auth"]
+   
+  }),
+  new HtmlWebpackPlugin({
+    template: './src/home.html', // Skabelon til hovedside
+    filename: 'home.html', // Output-fil
+    chunks: ["home"],
+    scriptLoading: "module"
    
   }),
    

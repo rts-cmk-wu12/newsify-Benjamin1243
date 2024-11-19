@@ -12,6 +12,13 @@ nextStep(){
 return this.returnArray
  
 }
+nextStepClick(selfStatus){
+    this.returnArray = []
+    this.status == selfStatus
+    this.returnArray.push(this.textes[this.status], this.headings[this.status], this.imgs[this.status])
+    return this.returnArray
+}
+
 }
 
 module.exports ={ShowNextStep}

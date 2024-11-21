@@ -9,5 +9,6 @@ export async function fetchNews() {
     const data = await response.json()
     return data
     
+    
 }
 

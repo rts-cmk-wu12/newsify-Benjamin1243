@@ -1,0 +1,25 @@
+@use "style.scss";
+@use "variables.scss";
+
+
+header{
+    display: flex;
+}
+
+
+.newsArticleBox{
+    &__headingbox{
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+    &__image{
+        width: 18px;
+    }
+}
+
+.newsArticle{
+    &--displayNone{
+        display: none;
+    }
+}

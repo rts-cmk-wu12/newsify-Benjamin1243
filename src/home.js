@@ -28,7 +28,7 @@ articles.forEach(element => {
     const articleHeadingImg = document .createElement("img")
     articleHeadingImg.setAttribute("src", "./images/newsify_logo2.png")
     articleHeadingArrow.classList.add("fa-solid", "fa-chevron-left");
-    articleHeading.textContent = element.section;
+    articleHeading.textContent = element.section.toUpperCase();
     //Hernede giver jeg classes til mine element
     articleDiv.classList.add("newsArticleBox");
     articleDiv.classList.add(element.section)
@@ -52,7 +52,7 @@ articles.forEach(element => {
 });
 
 function addNewArticle(elementname, element){
-    console.log(element)
+    
     const group = document.querySelector("."+elementname)
     //først opretter jeg en sektion og derefter opretter jeg alle elementer der skal med i
     const newsArticle = document.createElement("section")
@@ -62,10 +62,22 @@ function addNewArticle(elementname, element){
     const imageLink =element.multimedia[0].url
     newsImage.setAttribute("src", imageLink)
     newsHeading.textContent = element.title
-    newsText.textContent = element.abstract
+    const apiText =  element.abstract
+    const shownText = apiText.split(" ")
+    let showText = "" 
+    for(let i = 1; i < 10;i++){
+       showText = showText+ " " +shownText[i]
+    }
+    showText =showText + "..."
+    
+    newsText.textContent = showText
     
 //her adder jeg classes
 newsArticle.classList.add("newsArticle")
+newsImage.classList.add("newsArticle__image")
+newsHeading.classList.add("newsHeading__heading")
+newsText.classList.add("newsHeading__text")
+
 
 
     
@@ -73,6 +85,7 @@ newsArticle.classList.add("newsArticle")
     newsArticle.appendChild(newsHeading)
     newsArticle.appendChild(newsText)
     group.appendChild(newsArticle)
+    
     newsArticle.classList.add("newsArticle--displayNone")
     //her giver jeg en eventlistener til min section, så når man kilkker på den kommer man videre til den rigtige
     newsArticle.addEventListener("click", ()=>{
@@ -80,16 +93,20 @@ newsArticle.classList.add("newsArticle")
     })
 }
 
-console.log(categories)
 
 function dropNewsDown(){
     const articlesInside = this.parentElement.parentElement.querySelectorAll("section")
     const arrow = this.parentElement.querySelector("i")
-    if(arrow.classList.contains("fa-chervon-left")){
-        arrow.classList.remove("fa-chervon-left")
-        arrow.classList.add("fa-chervon-down")
+    if(arrow.classList.contains("fa-chevron-left")){
+        arrow.classList.remove("fa-chevron-left")
+        console.log(arrow.classList)
+        arrow.classList.add("fa-chevron-down" )
+    }else{
+        arrow.classList.remove("fa-chevron-down")
+        arrow.classList.add("fa-solid","fa-chevron-left", "newsArticleBox__arrow" )
+
     }
-    console.log(arrow)
+    
     articlesInside.forEach(element =>{
         element.classList.toggle("newsArticle--displayNone")
     })

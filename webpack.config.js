@@ -12,7 +12,8 @@ home: "./src/home.js"
 },
 
 output:{
-  path: path.resolve(__dirname, "dist"),
+  //grundet github, skiftede jeg filename til docs  istedet for dist, men ellers er det præcis det samme
+  path: path.resolve(__dirname, "docs"),
   filename: "[name].js",
   
   

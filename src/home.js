@@ -127,13 +127,24 @@ let swipeElements = document.querySelectorAll(".newsArticle")
 let startX = 0;
 let startY = 0;
 let isSwiping = false;
+// her laver jeg et array der holder øje med om et af elemeterne i forvejen slidet ud
+let slidet = []
 
 swipeElements.forEach( swipeElement =>{
+    let check = ""
     console.log(swipeElement)
     let startX 
+    let actualX = 400
+    
     //denne eventlister kører når man lægger hånden på skærmen
 swipeElement.addEventListener('touchstart', (e) => {
     const touch = e.touches[0];
+    //her tjekker jeg for om et elemetn i forvejen er åbnet, og dferefter lukker det
+    
+    if(slidet.length == 1){
+        slidet[0].style.transform = "translate(0px)"
+    }
+    
     //dette sætter to variable, hvad x var i starten, og hvad y var i staren 
     startX = touch.clientX;
     startY = touch.clientY;
@@ -141,15 +152,41 @@ swipeElement.addEventListener('touchstart', (e) => {
 });
  //denne kører men der swippes
 swipeElement.addEventListener('touchmove', (e) => {
+    
     //dette tager fat i pixels på x-aksen afhængint at hvor meget der scroles
     const touch = e.touches[0].clientX - 300;
-    console.log(touch)
+    let check = ""
+    
+    if(swipeElement.style.transform.translate == "translate("+0+"px)"){
+         swipeElement.style.transform = "translate(-200px)"
+        
+         check = "open"
+         slidet = [swipeElement]
+         return
+    }
+    if(touch > actualX){
+        swipeElement.style.transform = "translate("+0+"px)"
+        slidet = []
+        
+        return
+    }else {
+         swipeElement.style.transform = "translate(-200px)"
+         console.log("open")
+         
+         slidet = [swipeElement]
+         check = "open"
+        
+         
+    }
+    
+
     //lige nu har jeg bare hardcoded valuesne, men det betyder bare at jeg begrænser swipen, så man ikke kan swipe elementet helt ud
     if(touch < -200 || touch >3){
         console.log("over")
         return
     }
-    swipeElement.style.transform = "translate("+touch+"px)"
+    actualX = touch
+    
     //denne stopper functionen, hvis der ikke swippes
     if (!isSwiping) return;
     // Forhindrer standard scrolladfærd
@@ -168,7 +205,19 @@ swipeElement.addEventListener('touchend', (e) => {
     if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0) {
         console.log('Swipe left!');
     }
-
+    //her tjekker jeg om elemenet et åbent, jeg gør det til sidts så scrolling ikke bliver forstyret midt i det hele
+    if(check == "open"){
+        actualX = 300
+        console.log("open")
+       
+       
+    }else{
+        actualX = 0
+        console.log("lukket")
+    }
+    console.log(slidet)
+  
+    
     // Nulstiller isSwiping efter swipe
     isSwiping = false;})
 })

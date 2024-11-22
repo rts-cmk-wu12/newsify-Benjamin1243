@@ -21,6 +21,7 @@ articles.forEach(element => {
     } 
     //her opretter jeg kategori diven
     categories.push(element.section)
+   
     const articleDiv = document.createElement("article");
     const articleHeadingBox = document.createElement("div");
     const articleHeading = document.createElement("h2");
@@ -43,7 +44,7 @@ articles.forEach(element => {
     
     articleHeadingBox.appendChild(articleHeadingArrow);
     articleDiv.appendChild(articleHeadingBox);
-
+    
     allArticles.appendChild(articleDiv);
     //hernde adder jeg mine eventlisteners 
     articleHeadingArrow.addEventListener("click", dropNewsDown)
@@ -52,8 +53,9 @@ articles.forEach(element => {
 });
 
 function addNewArticle(elementname, element){
-    
+    const archiveIcon = document.createElement("i")
     const group = document.querySelector("."+elementname)
+    const extraDiv = document.createElement("div")
     //først opretter jeg en sektion og derefter opretter jeg alle elementer der skal med i
     const newsArticle = document.createElement("section")
     const newsImage = document.createElement("img")
@@ -77,20 +79,26 @@ newsArticle.classList.add("newsArticle")
 newsImage.classList.add("newsArticle__image")
 newsHeading.classList.add("newsHeading__heading")
 newsText.classList.add("newsHeading__text")
-
+extraDiv.classList.add("newsArticleExtraDiv")
+archiveIcon.classList.add("fa-regular")
+archiveIcon.classList.add("fa-bookmark")
+archiveIcon.classList.add("archiveArticle")
 
 
     
     newsArticle.appendChild(newsImage)
+    extraDiv.appendChild(archiveIcon)
+    archiveIcon.style.display = "none";
     newsArticle.appendChild(newsHeading)
     newsArticle.appendChild(newsText)
-    group.appendChild(newsArticle)
+    extraDiv.appendChild(newsArticle)
+    group.appendChild(extraDiv)
     
     newsArticle.classList.add("newsArticle--displayNone")
     //her giver jeg en eventlistener til min section, så når man kilkker på den kommer man videre til den rigtige
-    newsArticle.addEventListener("click", ()=>{
-        window.open( element.url);
-    })
+    // newsArticle.addEventListener("click", ()=>{
+    //     window.open( element.url);
+    // })
 }
 
 
@@ -111,4 +119,57 @@ function dropNewsDown(){
         element.classList.toggle("newsArticle--displayNone")
     })
 }
+
+
+//Hernede laver jeg mit swipe event
+let swipeElements = document.querySelectorAll(".newsArticle")
+
+let startX = 0;
+let startY = 0;
+let isSwiping = false;
+
+swipeElements.forEach( swipeElement =>{
+    console.log(swipeElement)
+    let startX 
+    //denne eventlister kører når man lægger hånden på skærmen
+swipeElement.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    //dette sætter to variable, hvad x var i starten, og hvad y var i staren 
+    startX = touch.clientX;
+    startY = touch.clientY;
+    isSwiping = true;
+});
+ //denne kører men der swippes
+swipeElement.addEventListener('touchmove', (e) => {
+    //dette tager fat i pixels på x-aksen afhængint at hvor meget der scroles
+    const touch = e.touches[0].clientX - 300;
+    console.log(touch)
+    //lige nu har jeg bare hardcoded valuesne, men det betyder bare at jeg begrænser swipen, så man ikke kan swipe elementet helt ud
+    if(touch < -200 || touch >3){
+        console.log("over")
+        return
+    }
+    swipeElement.style.transform = "translate("+touch+"px)"
+    //denne stopper functionen, hvis der ikke swippes
+    if (!isSwiping) return;
+    // Forhindrer standard scrolladfærd
+    e.preventDefault();
+});
+
+swipeElement.addEventListener('touchend', (e) => {
+    if (!isSwiping) return;
+
+    const touch = e.changedTouches[0];
+    const deltaX = touch.clientX - startX;
+    const deltaY = touch.clientY - startY;
+
+    // Vi tjekker kun for horizontal swipe til venstre
+    //denne tjekker om swippet har ændret sig siden den startede
+    if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0) {
+        console.log('Swipe left!');
+    }
+
+    // Nulstiller isSwiping efter swipe
+    isSwiping = false;})
+})
 

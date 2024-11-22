@@ -24,6 +24,7 @@ header{
 }
 .allArticles{
     display: grid;
+    position: absolute;
     justify-content: center;
     width: 393px;
 }
@@ -84,5 +85,44 @@ form{
     }
     &__heading{
         font-size: 16px;
+    }
+}
+//scss kode til footeren
+footer{
+    position: fixed;
+    width: 393px;
+    background-color: white;
+    top: 90%;
+    box-shadow: 0px -10px 10px rgba(0, 0, 0, 0.187)
+}
+.footerbar{
+    
+    &__list{
+        display: flex;
+        padding: 26px 39px;
+        justify-content: space-between;
+    }
+    &__group{
+        display: grid;
+        text-align: center;
+        justify-content: center;
+
+    }
+    &__icon{
+        font-size: 24px;
+        &--active{
+            color: variables.$buttonGreen;
+        }
+    }
+    
+    &__text{
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 100;
+        color: variables.$newsGrey;
+        font-family: variables.$defualtFont;
+        &--active{
+            color: variables.$buttonGreen;
+        }
     }
 }

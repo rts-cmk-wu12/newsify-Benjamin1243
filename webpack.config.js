@@ -75,6 +75,12 @@ module: {
     chunks: ["archieve"],
     scriptLoading: "module"
    
+  }),
+  new HtmlWebpackPlugin({
+    template: './src/settings.html', // Skabelon til hovedside
+    filename: 'settings.html', // Output-fil
+   
+   
   })
    
    

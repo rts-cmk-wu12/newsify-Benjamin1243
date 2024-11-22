@@ -8,7 +8,8 @@ mode: "production",
 entry: { 
 bundle: "./src/index.js",
 auth: "./src/auth.js",
-home: "./src/home.js"
+home: "./src/home.js",
+archieve: "./src/archieve.js"
 },
 
 output:{
@@ -68,6 +69,13 @@ module: {
     scriptLoading: "module"
    
   }),
+  new HtmlWebpackPlugin({
+    template: './src/archieve.html', // Skabelon til hovedside
+    filename: 'archieve.html', // Output-fil
+    chunks: ["archieve"],
+    scriptLoading: "module"
+   
+  })
    
    
   ]

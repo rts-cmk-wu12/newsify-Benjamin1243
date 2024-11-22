@@ -1,0 +1,142 @@
+@use "style.scss";
+@use "variables.scss";
+
+
+header{
+    display: flex;
+    justify-content: center;
+    gap: 11px;
+    align-items: center;
+    font-family: variables.$defualtFont;
+    color: variables.$newsGrey;
+    margin: 20px;
+    
+   
+}
+.header__logo{
+    width: 16px;
+    height: 27px;
+    
+    
+}
+.header__heading{
+    font-size: 24px;
+}
+.allArticles{
+    display: grid;
+    position: relative;
+   display: grid;
+   
+    width: 90%;
+    margin: 0 auto;
+}
+form{
+    margin-bottom: 22px;
+    display: grid;
+    justify-content: center;
+   input{
+    width: 345px;
+    height: 46px;
+    background-color: #d9d9d950;
+    border: none;
+    margin: 0 auto;
+    
+   }
+}
+
+.newsArticleBox{
+   width: 100%;
+  
+    &__headingbox{
+        display: flex;
+        height: 60px;
+        border-top: 1px solid variables.$statusBar;
+        border-bottom: 1px solid variables.$statusBar;
+        align-items: center;
+        width: 100%;
+        gap: 3rem;
+    }
+    &__image{
+        width: 18px;
+    }
+    &__arrow{
+        margin-left: auto;
+    }
+    &__heading{
+        font-family: variables.$defualtFont;
+        color: variables.$newsGrey;
+        font-size: 16px;
+    }
+}
+
+.newsArticle{
+    background-color: white;
+    max-width: 100%;
+    transition: transform 0.3s ;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 17px 24px;
+    border-bottom: 1px solid variables.$statusBar;
+    border-top: 1px solid variables.$statusBar;
+
+    &--displayNone{
+        display: none;
+    }
+    &__image{
+        grid-row: span 2;
+        width: 72px;
+        height: 72px;
+        border-radius: 8px;
+    }
+    &__heading{
+        font-size: 16px;
+    }
+}
+//dette er en extra der er foran alt i html filen, men i layoutet er bagerst
+.newsArticleExtraDiv{
+    background-color: variables.$swipeGreen;;
+}
+//scss kode til footeren
+footer{
+    position: fixed;
+    width: 393px;
+    background-color: white;
+    top: 90%;
+    box-shadow: 0px -10px 10px rgba(0, 0, 0, 0.187)
+}
+.footerbar{
+    
+    &__list{
+        display: flex;
+        padding: 26px 39px;
+        justify-content: space-between;
+    }
+    &__group{
+        display: grid;
+        
+        text-align: center;
+        justify-content: center;
+
+    }
+    &__icon{
+        font-size: 24px;
+        color: black;
+        &--active{
+            color: variables.$buttonGreen;
+        }
+    }
+    //jeg har omkranset det hele med et link, derfor styler jeg link her
+    &__link{
+        text-decoration: none;
+    }
+    &__text{
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 100;
+        color: variables.$newsGrey;
+        font-family: variables.$defualtFont;
+        &--active{
+            color: variables.$buttonGreen;
+        }
+    }
+}

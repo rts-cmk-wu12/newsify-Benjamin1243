@@ -1,0 +1,106 @@
+@use "./sanimations";
+@use "./variables";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+$newsGrey: #404040;
+$statusBar: #C5C5C5;
+$buttonGreen: #4D861F;
+$defualtFont: "Playfair Display", serif;
+$smallTextFont: "Open Sans", sans-serif;
+
+.splashScreen{
+    text-align: center;
+    
+    background-color: white;
+    padding-top: 3rem;
+   
+  animation-name: fadeNewsLogoIn;
+  animation-duration: 10s;
+  opacity: 0;
+    
+    height: 100vh;
+   &__img{
+    animation-name: smallToBigimg;
+    animation-duration: 4s;
+    display: inline;
+    text-align: center;
+   }
+    &__heading{
+      color: $newsGrey;    
+      font-family: $defualtFont;
+      font-size: 45px;
+     
+    }
+}
+//her er scss koden til in toturial sektion
+.toturial{
+    //den starter med at være display none, men bliver ændret efter 3 sekunder gennem index.js
+    display: none;
+    &__heading{
+        font-family: $defualtFont;
+        color: $newsGrey;
+        text-align: center;
+    }
+    &__text{
+        font-family: $smallTextFont;
+        font-size: 18px;
+        text-align: center;
+        color: $newsGrey;
+    }
+    &__img{
+        max-height: 376px;
+    }
+    //her er koden til statusbarene 
+    &__statusButtons{
+        display: flex;
+        justify-content: space-around;
+        max-width: 114px;
+        
+        margin: 0 auto;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        
+    }
+    &__statusButton{
+      background-color: $statusBar;
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+      &--selected{
+        width: 66px;
+        background-color: $buttonGreen;
+        border-radius: 16px;
+
+    }
+    }
+    &__skipAndNextButtons{
+        display: flex;
+        justify-content: space-around;
+        gap: 21px;
+    }
+    &__skipAndNextButton{
+        width: 166px;
+        height: 60px;
+        border-radius: 40px;
+        display: block;
+        display: grid;
+        place-items: center;
+        &--skip{
+            border: 1px solid $buttonGreen;
+            text-decoration: none;
+            background-color: transparent;
+            color: $buttonGreen;
+            font-size: 18px;
+            font-family: $smallTextFont;
+        }
+        &--next{
+            border: 1px solid $buttonGreen;
+            text-decoration: none;
+            background-color: $buttonGreen;
+            color: white;
+            font-size: 18px;
+            font-family: $smallTextFont;
+        }
+    }
+}

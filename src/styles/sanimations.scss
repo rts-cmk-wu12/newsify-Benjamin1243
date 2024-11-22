@@ -1,0 +1,12 @@
+@keyframes fadeNewsLogoIn{
+    from {opacity: 0;}
+    to {opacity: 1;}
+    100%{
+        display: none;  
+    }
+  }
+  @keyframes smallToBigimg{
+    from { width: 20%;}
+    to { width: 60%;}
+    
+  }
